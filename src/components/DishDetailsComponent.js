@@ -10,19 +10,22 @@ class DishDetail extends Component {
     }
     render(){
         const comments = this.props.selectedDish.comments.map((comment) => {
+            /*
             var date = new Date(comment.date);
             var newDate = date.toDateString();
             newDate = newDate.substring(4);
+            */
             return(
                 <div key={comment.id}>
                         <CardText>{comment.comment}</CardText>
-                        <CardText>-- {comment.author}, {newDate}</CardText>
+                        <CardText>-- {comment.author}, {new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'short', day: '2-digit'}).format(new Date(Date.parse(comment.date)))}</CardText>
                         <CardText></CardText>
                 </div>
             );
         });
             return(
-                <div className="row">
+                <div className="container">
+                    <div className="row">
                     <div className="col-12 col-md-5 m-1">
                     <Card>
                     <CardImg width="100%" src={this.props.selectedDish.image} alt={this.props.selectedDish.name}/>
@@ -37,6 +40,7 @@ class DishDetail extends Component {
                            <CardBody>{comments}</CardBody>
                         </Card>
                     </div>
+                </div>
                 </div>
             );
         }
