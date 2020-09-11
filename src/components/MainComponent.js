@@ -7,6 +7,7 @@ import Contact from './ContactComponent';
 import DishDetail from './DishDetailsFunctionComponent';
 import Header from './HeaderComponent';
 import Footer from './FooterComponent';
+import About from './AboutComponent'
 import { DISHES } from '../shared/dishes';
 import {PROMOTIONS} from '../shared/promotions';
 import {LEADERS} from '../shared/leaders';
@@ -55,6 +56,7 @@ class Main extends Component {
           {/*Inline function component below*/}
           <Route exact path="/menu" component={() => <Menu dishes={this.state.dishes}/>}/>
           <Route path="/menu/:dishId" component={DishWithId}/>
+          <Route path="/aboutus" component={() => <About leaders={this.state.leaders}/>}/>
           <Redirect to="/home" />
         </Switch>
         <Footer/>
